@@ -1,0 +1,11 @@
+export default function Home() {
+  return (
+    <main>
+      <section>
+        <span>Nido</span>
+        <h1><%= it.projectName %></h1>
+        <p>Start shaping your Next.js project from a minimal, modular base.</p>
+      </section>
+    </main>
+  );
+}

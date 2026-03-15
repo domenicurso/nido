@@ -1,0 +1,53 @@
+id: tauri-react
+label: Tauri + React
+description: Desktop starter generated with create-tauri-app.
+generator:
+  command: bunx
+  args:
+    - create-tauri-app@latest
+    - "<%= it.projectName %>"
+    - --manager
+    - bun
+    - --template
+    - react-ts
+    - --yes
+    - "<%= it.answers['template.tauri-react.identifier'] ? '--identifier' : '' %>"
+    - "<%= it.answers['template.tauri-react.identifier'] || '' %>"
+    - "<%= it.answers['template.tauri-react.tauriVersion'] === 'latest' ? '' : '--tauri-version' %>"
+    - "<%= it.answers['template.tauri-react.tauriVersion'] === 'latest' ? '' : it.answers['template.tauri-react.tauriVersion'] %>"
+prompts:
+  - id: template.tauri-react.identifier
+    kind: text
+    label: Bundle identifier
+    placeholder: com.example.myapp
+  - id: template.tauri-react.tauriVersion
+    kind: select
+    label: Tauri version
+    initialValue: latest
+    options:
+      - value: latest
+        label: Latest stable
+      - value: "2"
+        label: Tauri 2
+      - value: "1"
+        label: Tauri 1
+  - id: template.tauri-react.windowTitle
+    kind: text
+    label: Window title
+    initialValue: Nido Desktop
+    required: true
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchJson
+    path: package.json
+    merge:
+      name: "<%= it.projectName.toLowerCase().replace(/[^a-z0-9._-]+/g, '-') %>"
+      private: true
+  - type: patchJson
+    path: src-tauri/tauri.conf.json
+    merge:
+      productName: "<%= it.answers['template.tauri-react.windowTitle'] %>"
+      app:
+        windows:
+          - title: "<%= it.answers['template.tauri-react.windowTitle'] %>"

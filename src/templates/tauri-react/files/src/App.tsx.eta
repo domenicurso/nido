@@ -1,0 +1,11 @@
+export default function App() {
+  return (
+    <main>
+      <section>
+        <span>Nido</span>
+        <h1><%= it.projectName %></h1>
+        <p>Desktop-ready React powered by Tauri and Bun.</p>
+      </section>
+    </main>
+  );
+}

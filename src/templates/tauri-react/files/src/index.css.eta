@@ -1,0 +1,14 @@
+:root {
+  color: #f3f4f6;
+  background: radial-gradient(circle at top, #1f2937, #020617 70%);
+  font-family: "Geist", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}

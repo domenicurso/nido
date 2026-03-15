@@ -1,0 +1,49 @@
+:root {
+  color: #f3f4f6;
+  background: radial-gradient(circle at top, #1f2937, #020617 70%);
+  font-family: "Geist", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100vh;
+}
+
+section {
+  width: min(42rem, calc(100vw - 3rem));
+  margin: 0 auto;
+  padding: 6rem 0;
+}
+
+span {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+p {
+  margin: 0;
+  max-width: 38rem;
+  color: rgba(243, 244, 246, 0.82);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}

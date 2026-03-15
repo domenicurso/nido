@@ -1,0 +1,45 @@
+id: motion
+label: Motion
+description: Adds motion/react and animates the starter view.
+dependencies: []
+incompatibilities: []
+supportedTemplates:
+  - next
+  - tauri-react
+  - vite-react
+apply:
+  - type: patchJson
+    path: package.json
+    merge:
+      dependencies:
+        motion: ^12.0.0
+  - type: write
+    path: "<%= it.template.id === 'next' ? 'lib/motion.ts' : 'src/lib/motion.ts' %>"
+    template: files/lib/motion.ts.eta
+  - type: patchText
+    when: "<%= it.template.id === 'next' %>"
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: import * as motion from "motion/react-client";
+    prepend: |
+      import * as motion from "motion/react-client";
+  - type: patchText
+    when: "<%= it.template.id !== 'next' %>"
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: import { motion } from "motion/react";
+    prepend: |
+      import { motion } from "motion/react";
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: <motion.section
+    find: <section className=
+    replace: "<motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }} className="
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: <motion.section
+    find: <section>
+    replace: "<motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>"
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: </motion.section>
+    find: </section>
+    replace: </motion.section>

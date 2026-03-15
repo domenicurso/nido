@@ -1,0 +1,62 @@
+import { cubicBezier } from "motion/react";
+
+/**
+ * Options for fluid animation ease functions.
+ */
+interface FluidEaseOptions {
+  duration?: number;
+  delay?: number;
+}
+
+/**
+ * Ease function for fluid animations. Use with the Motion `transition` prop.
+ * @param options - Options for the animation.
+ * @param options.duration - The duration of the animation. Default: 0.5
+ * @param options.delay - The delay before the animation starts. Default: 0
+ * @returns The ease function.
+ */
+export function easeFluid(options: FluidEaseOptions = {}) {
+  const { duration = 0.5, delay = 0 } = options;
+  return { duration, delay, ease: cubicBezier(0.21, 0.51, 0.2, 0.93) };
+  // return { duration, delay, ease: "circInOut" };
+}
+
+/**
+ * Options for quintic animation ease functions.
+ */
+interface QuintEaseOptions {
+  duration?: number;
+  delay?: number;
+}
+
+/**
+ * Ease function for quintic animations. Use with the Motion `transition` prop.
+ * @param options - Options for the animation.
+ * @param options.duration - The duration of the animation. Default: 1
+ * @param options.delay - The delay before the animation starts. Default: 0
+ * @returns The ease function.
+ */
+export function easeQuint(options: QuintEaseOptions = {}) {
+  const { duration = 1, delay = 0 } = options;
+  return { duration, delay, ease: cubicBezier(0.86, 0, 0.07, 1) };
+}
+
+/**
+ * Options for snappy animation ease functions.
+ */
+interface SnappyEaseOptions {
+  duration?: number;
+  delay?: number;
+}
+
+/**
+ * Ease function for snappy animations. Use with the Motion `transition` prop.
+ * @param options - Options for the animation.
+ * @param options.duration - The duration of the animation. Default: 0.3
+ * @param options.delay - The delay before the animation starts. Default: 0
+ * @returns The ease function.
+ */
+export function easeSnappy(options: SnappyEaseOptions = {}) {
+  const { duration = 0.3, delay = 0 } = options;
+  return { duration, delay, ease: cubicBezier(0.19, 1, 0.22, 1) };
+}

@@ -1,0 +1,54 @@
+id: tailwindcss
+label: Tailwind CSS
+description: Adds Tailwind v4, shared class merging helpers, and starter utility classes.
+dependencies: []
+incompatibilities: []
+supportedTemplates:
+  - next
+  - tauri-react
+  - vite-react
+apply:
+  - type: write
+    path: "<%= it.template.id === 'next' ? 'lib/cn.ts' : 'src/lib/cn.ts' %>"
+    template: files/lib/cn.ts.eta
+  - type: patchJson
+    path: package.json
+    merge:
+      dependencies:
+        clsx: ^2.1.1
+        tailwind-merge: ^3.3.1
+      devDependencies:
+        tailwindcss: ^4.1.12
+        "@tailwindcss/postcss": ^4.1.12
+        postcss: ^8.4.49
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/globals.css' : 'src/index.css' %>"
+    skipIfContains: '@import "tailwindcss";'
+    prepend: |
+      @import "tailwindcss";
+
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    skipIfContains: className="min-h-screen bg-slate-950 text-slate-50"
+    find: |
+      <main>
+            <section>
+              <span>Nido</span>
+              <h1><%= it.projectName %></h1>
+    replace: |
+      <main className="min-h-screen bg-slate-950 text-slate-50">
+            <section className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center gap-6 px-6 py-24">
+              <span className="inline-flex w-fit rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300">Nido</span>
+              <h1 className="m-0 text-5xl font-semibold tracking-tight"><%= it.projectName %></h1>
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    find: <p>Start shaping your Next.js project from a minimal, modular base.</p>
+    replace: <p className="m-0 max-w-2xl text-base leading-7 text-slate-300">Start shaping your Next.js project from a minimal, modular base.</p>
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    find: <p>Start composing your stack from this clean React baseline.</p>
+    replace: <p className="m-0 max-w-2xl text-base leading-7 text-slate-300">Start composing your stack from this clean React baseline.</p>
+  - type: patchText
+    path: "<%= it.template.id === 'next' ? 'app/page.tsx' : 'src/App.tsx' %>"
+    find: <p>Desktop-ready React powered by Tauri and Bun.</p>
+    replace: <p className="m-0 max-w-2xl text-base leading-7 text-slate-300">Desktop-ready React powered by Tauri and Bun.</p>

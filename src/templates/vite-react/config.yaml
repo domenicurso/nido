@@ -1,0 +1,40 @@
+id: vite-react
+label: Vite + React
+description: React TypeScript starter generated with create-vite.
+generator:
+  command: bunx
+  args:
+    - create-vite@latest
+    - "<%= it.projectName %>"
+    - --no-interactive
+    - --template
+    - "<%= it.answers['template.vite-react.variant'] === 'react-compiler' ? 'react-compiler-ts' : 'react-ts' %>"
+prompts:
+  - id: template.vite-react.variant
+    kind: select
+    label: React template
+    initialValue: react
+    options:
+      - value: react
+        label: React
+      - value: react-compiler
+        label: React Compiler
+  - id: template.vite-react.includeRouterHint
+    kind: confirm
+    label: Include a router-ready hint in App.tsx?
+    initialValue: true
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchText
+    when: "<%= it.answers['template.vite-react.includeRouterHint'] === true %>"
+    path: src/App.tsx
+    find: <p>Start composing your stack from this clean React baseline.</p>
+    replace: |
+      <p>Start composing your stack from this clean React baseline.</p>
+            <p>Router-ready and waiting for your first route tree.</p>
+  - type: patchJson
+    path: package.json
+    merge:
+      name: "<%= it.projectName.toLowerCase().replace(/[^a-z0-9._-]+/g, '-') %>"
+      private: true

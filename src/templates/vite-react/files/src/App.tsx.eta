@@ -1,0 +1,11 @@
+export default function App() {
+  return (
+    <main>
+      <section>
+        <span>Nido</span>
+        <h1><%= it.projectName %></h1>
+        <p>Start composing your stack from this clean React baseline.</p>
+      </section>
+    </main>
+  );
+}

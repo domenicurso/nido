@@ -1,0 +1,65 @@
+id: next
+label: Next.js
+description: App Router starter generated with create-next-app.
+generator:
+  command: bunx
+  args:
+    - create-next-app@latest
+    - "<%= it.projectName %>"
+    - --ts
+    - --app
+    - --use-bun
+    - --skip-install
+    - --disable-git
+    - --empty
+    - --yes
+    - "<%= it.answers['template.next.useSrcDir'] ? '--src-dir' : '' %>"
+    - "<%= it.answers['template.next.enableReactCompiler'] ? '--react-compiler' : '' %>"
+    - "<%= it.answers['template.next.bundler'] === 'turbopack' ? '--turbopack' : '' %>"
+    - "<%= it.answers['template.next.bundler'] === 'webpack' ? '--webpack' : '' %>"
+    - "<%= it.answers['template.next.bundler'] === 'rspack' ? '--rspack' : '' %>"
+    - --import-alias
+    - "<%= it.answers['template.next.importAlias'] || '@/*' %>"
+prompts:
+  - id: template.next.useSrcDir
+    kind: confirm
+    label: Use a src/ directory?
+    initialValue: false
+  - id: template.next.bundler
+    kind: select
+    label: Bundler
+    initialValue: turbopack
+    options:
+      - value: turbopack
+        label: Turbopack
+      - value: webpack
+        label: Webpack
+      - value: rspack
+        label: Rspack
+  - id: template.next.importAlias
+    kind: text
+    label: Import alias
+    initialValue: "@/*"
+    required: true
+  - id: template.next.enableReactCompiler
+    kind: confirm
+    label: Enable React Compiler?
+    initialValue: false
+  - id: template.next.includeApiRoute
+    kind: confirm
+    label: Include a starter API route?
+    initialValue: true
+apply:
+  - type: mergeDir
+    from: files
+  - type: write
+    when: "<%= it.answers['template.next.includeApiRoute'] === true %>"
+    path: app/api/health/route.ts
+    template: files/app/api/health/route.ts.eta
+  - type: patchJson
+    path: package.json
+    merge:
+      name: "<%= it.projectName.toLowerCase().replace(/[^a-z0-9._-]+/g, '-') %>"
+      private: true
+      scripts:
+        dev: next dev

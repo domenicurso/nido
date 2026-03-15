@@ -1,0 +1,17 @@
+id: oxfmt
+label: Oxc Formatter
+description: Adds oxfmt config and scripts.
+dependencies: []
+incompatibilities: []
+supportedTemplates: []
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchJson
+    path: package.json
+    merge:
+      devDependencies:
+        oxfmt: ^0.40.0
+      scripts:
+        format: oxfmt
+        "format:check": oxfmt --check .

@@ -1,0 +1,16 @@
+id: oxlint
+label: Oxc Linter
+description: Adds oxlint config and scripts.
+dependencies: []
+incompatibilities: []
+supportedTemplates: []
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchJson
+    path: package.json
+    merge:
+      devDependencies:
+        oxlint: ^1.55.0
+      scripts:
+        lint: oxlint .

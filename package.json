@@ -1,0 +1,30 @@
+{
+  "name": "nido",
+  "private": true,
+  "bin": {
+    "nido": "./src/index.ts"
+  },
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint",
+    "start": "bun src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.1.0",
+    "eta": "^4.5.1",
+    "picocolors": "^1.1.1",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

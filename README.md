@@ -114,6 +114,26 @@ Run the CLI:
 bun src/index.ts
 ```
 
+Use it as a global `nido` command during local development:
+
+```bash
+# from this repository
+bun link
+
+# from any other directory
+bun link nido
+nido
+```
+
+Install it as a global `nido` command after publishing:
+
+```bash
+bun add -g nido
+nido
+```
+
+`nido` uses a Bun shebang, so Bun must be installed on the machine that runs it.
+
 Validate the codebase:
 
 ```bash

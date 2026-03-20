@@ -1,11 +1,18 @@
 {
   "name": "nido",
-  "private": true,
+  "version": "0.1.0",
+  "description": "A modular scaffolding CLI for bootstrapping projects with templates and optional modules.",
   "bin": {
     "nido": "./src/index.ts"
   },
+  "files": [
+    "src",
+    "README.md"
+  ],
   "type": "module",
-  "module": "src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "oxfmt",
     "format:check": "oxfmt --check",

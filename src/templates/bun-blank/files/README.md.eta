@@ -1,0 +1,10 @@
+# <%= it.projectName %>
+
+Generated with Nido using the <%= it.template.label %> template.
+
+## Development
+
+```bash
+bun install
+bun run dev
+```

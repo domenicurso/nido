@@ -33,5 +33,7 @@
   },
   "peerDependencies": {
     "typescript": "^5"
-  }
+  },
+  "module": "index.ts",
+  "private": true
 }

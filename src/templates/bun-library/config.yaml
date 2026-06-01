@@ -1,0 +1,20 @@
+id: bun-library
+label: Bun Library
+description: TypeScript library starter layered on top of Bun's default init.
+generator:
+  command: bun
+  args:
+    - init
+    - --yes
+    - "<%= it.projectName %>"
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchJson
+    path: package.json
+    merge:
+      scripts:
+        build: bun build ./index.ts --outdir ./dist --target bun
+        dev: bun --watch index.ts
+        test: bun test
+        typecheck: tsc --noEmit

@@ -1,0 +1,21 @@
+id: bun-react
+label: Bun + React
+description: Full-stack React starter powered by Bun with a nido-ready app shell.
+generator:
+  command: bun
+  args:
+    - init
+    - --react
+    - --yes
+    - "<%= it.projectName %>"
+apply:
+  - type: mergeDir
+    from: files
+  - type: patchJson
+    path: package.json
+    merge:
+      name: "<%= it.projectName.toLowerCase().replace(/[^a-z0-9._-]+/g, '-') %>"
+      scripts:
+        typecheck: tsc --noEmit
+      devDependencies:
+        typescript: ^5

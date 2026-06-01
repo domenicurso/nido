@@ -1,0 +1,107 @@
+:root {
+  color: #f3f4f6;
+  background: radial-gradient(circle at top, #1f2937, #020617 70%);
+  font-family: "Geist", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+section {
+  width: min(100%, 48rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #cbd5e1;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+p {
+  margin: 0;
+  max-width: 42rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.api-tester {
+  width: min(100%, 36rem);
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.endpoint-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.url-input,
+.response-area,
+.send-button {
+  font: inherit;
+}
+
+.url-input,
+.response-area {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.78);
+  color: inherit;
+}
+
+.url-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+}
+
+.send-button {
+  border: 0;
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.response-area {
+  min-height: 10rem;
+  padding: 1rem;
+  resize: vertical;
+}
+
+@media (max-width: 640px) {
+  .endpoint-row {
+    flex-direction: column;
+  }
+}

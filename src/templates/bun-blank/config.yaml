@@ -1,0 +1,12 @@
+id: bun-blank
+label: Bun Blank
+description: Minimal Bun TypeScript starter generated with bun init.
+generator:
+  command: bun
+  args:
+    - init
+    - --yes
+    - "<%= it.projectName %>"
+apply:
+  - type: mergeDir
+    from: files

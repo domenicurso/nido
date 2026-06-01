@@ -4,6 +4,7 @@ description: Adds Tailwind v4, shared class merging helpers, and starter utility
 dependencies: []
 incompatibilities: []
 supportedTemplates:
+  - bun-react
   - next
   - tauri-react
   - vite-react

@@ -4,6 +4,7 @@ description: Adds motion/react and animates the starter view.
 dependencies: []
 incompatibilities: []
 supportedTemplates:
+  - bun-react
   - next
   - tauri-react
   - vite-react

@@ -31,6 +31,9 @@ The intended mental model is:
 
 ## Current Templates
 
+- `bun-blank`
+- `bun-library`
+- `bun-react`
 - `next`
 - `tauri-react`
 - `vite-react`
